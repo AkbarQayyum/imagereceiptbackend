@@ -1,7 +1,6 @@
 const { response } = require("express");
 const Users = require("../../models/UserModal");
 
-
 const jwt = require("jsonwebtoken");
 
 const registerUsers = async (req, res) => {
@@ -11,7 +10,11 @@ const registerUsers = async (req, res) => {
     console.log(obj);
     const request = await new Users(obj);
     const data = await request.save();
-
+    res.send({
+      isSuccess: true,
+      message: "user register successfully",
+      data: data,
+    });
   } catch (error) {
     console.log(error);
     res.send({
@@ -90,12 +93,10 @@ const removeUser = async (req, res) => {
   }
 };
 
-
 module.exports = {
   registerUsers,
   getAllUsers,
   getuserById,
   removeUser,
   updateUser,
-
 };
