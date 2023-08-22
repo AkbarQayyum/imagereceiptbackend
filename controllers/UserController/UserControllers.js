@@ -38,7 +38,7 @@ const getAllUsers = async (req, res) => {
 const getuserById = async (req, res) => {
   try {
     let data = await Users.findOne({
-      email: req.body.username,
+      username: req.body.username,
       password: req.body.password,
     });
     console.log(data);
