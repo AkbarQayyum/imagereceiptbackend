@@ -1,4 +1,4 @@
 const mongoose = require("mongoose");
-const Schema = require("./Schemas/UserSchemas");
-const ReceiptModal = mongoose.model("RegisterUsers", Schema);
+const Schema = require("./Schema");
+const ReceiptModal = mongoose.model("receipts", Schema);
 module.exports = ReceiptModal;
