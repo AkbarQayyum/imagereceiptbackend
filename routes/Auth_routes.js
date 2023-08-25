@@ -6,6 +6,8 @@ router.get("/", userControllers.getAllUsers);
 router.post("/login/", userControllers.getuserById);
 router.post("/register", userControllers.registerUsers);
 router.put("/update", userControllers.updateUser);
+router.post("/receipt", userControllers.SaveReceipt);
+router.get("/receipt", userControllers.getAllReceipt);
 router.delete("/delete/:id", userControllers.removeUser);
 
 

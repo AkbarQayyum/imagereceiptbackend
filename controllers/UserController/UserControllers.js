@@ -1,6 +1,6 @@
 const { response } = require("express");
 const Users = require("../../models/UserModal");
-
+const ReceiptModal  = require('../../models/ReceiptModal/modal')
 const jwt = require("jsonwebtoken");
 
 const registerUsers = async (req, res) => {
@@ -81,6 +81,49 @@ const updateUser = async (req, res) => {
   }
 };
 
+
+
+
+
+
+
+const SaveReceipt = async (req, res) => {
+  try {
+    console.log(req.body);
+    const obj = { ...req.body };
+    console.log(obj);
+    const request = await new ReceiptModal(obj);
+    const data = await request.save();
+    res.send({
+      isSuccess: true,
+      message: "Receipt Save successfully",
+      data: data,
+    });
+  } catch (error) {
+    console.log(error);
+    res.send({
+      Error: error,
+      isSuccess: false,
+      message: "something went wrong please try again.!",
+    });
+  }
+};
+
+
+
+const getAllReceipt = async (req, res) => {
+  try {
+    const data = await ReceiptModal.find();
+    res.send(data);
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
+
+
+
+
+
 const removeUser = async (req, res) => {
   try {
     let id = req.params.id;
@@ -98,5 +141,7 @@ module.exports = {
   getAllUsers,
   getuserById,
   removeUser,
+  SaveReceipt,
   updateUser,
+  getAllReceipt,
 };
