@@ -136,6 +136,21 @@ const removeUser = async (req, res) => {
   }
 };
 
+
+const RemoveReceipt = async (req, res) => {
+  try {
+    let id = req.params.id;
+    let data = await ReceiptModal.findByIdAndRemove(id);
+    res.send("Receipt Record Deleted Successfully");
+  } catch (error) {
+    res.send({
+      Error: error,
+    });
+  }
+};
+
+
+
 module.exports = {
   registerUsers,
   getAllUsers,
@@ -144,4 +159,5 @@ module.exports = {
   SaveReceipt,
   updateUser,
   getAllReceipt,
+  RemoveReceipt,
 };
