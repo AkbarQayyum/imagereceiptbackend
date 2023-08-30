@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 // importing reviews schema
 
 //create new instance of mongoose schema using mongoose internal schema validtion
+Schema = mongoose.Schema;
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -23,7 +24,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  
+  friends: {
+    type: [Schema.Types.ObjectId],
+    ref: "RegisterUsers",
+  },
 });
 
 //export schema to use in model file
