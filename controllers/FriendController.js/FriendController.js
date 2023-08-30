@@ -42,8 +42,8 @@ const PapulateFriend = async (req, res) => {
   try {
     console.log(req.body);
     const data = await Users.findById(req.body.id).populate("friends");
-    console.log(data);
-    res.send(data);
+    console.log(data?.friends);
+    res.send(data?.friends);
   } catch (error) {
     res.send({ Error: error });
   }
