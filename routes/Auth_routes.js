@@ -7,7 +7,7 @@ router.post("/login/", userControllers.getuserById);
 router.post("/register", userControllers.registerUsers);
 router.put("/update", userControllers.updateUser);
 router.post("/receipt", userControllers.SaveReceipt);
-router.get("/receipt", userControllers.getAllReceipt);
+router.get("/receipt/:id", userControllers.getAllReceipt);
 router.delete("/receipt/:id", userControllers.RemoveReceipt);
 router.delete("/delete/:id", userControllers.removeUser);
 

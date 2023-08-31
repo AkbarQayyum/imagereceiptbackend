@@ -1,6 +1,6 @@
 const { response } = require("express");
 const Users = require("../../models/UserModal");
-const ReceiptModal  = require('../../models/ReceiptModal/modal')
+const ReceiptModal = require("../../models/ReceiptModal/modal");
 const jwt = require("jsonwebtoken");
 
 const registerUsers = async (req, res) => {
@@ -81,12 +81,6 @@ const updateUser = async (req, res) => {
   }
 };
 
-
-
-
-
-
-
 const SaveReceipt = async (req, res) => {
   try {
     console.log(req.body);
@@ -109,20 +103,15 @@ const SaveReceipt = async (req, res) => {
   }
 };
 
-
-
 const getAllReceipt = async (req, res) => {
   try {
-    const data = await ReceiptModal.find();
+    console.log(req.params.id);
+    const data = await ReceiptModal.find({ userid: req.params.id });
     res.send(data);
   } catch (error) {
     res.send({ Error: error });
   }
 };
-
-
-
-
 
 const removeUser = async (req, res) => {
   try {
@@ -136,7 +125,6 @@ const removeUser = async (req, res) => {
   }
 };
 
-
 const RemoveReceipt = async (req, res) => {
   try {
     let id = req.params.id;
@@ -148,8 +136,6 @@ const RemoveReceipt = async (req, res) => {
     });
   }
 };
-
-
 
 module.exports = {
   registerUsers,

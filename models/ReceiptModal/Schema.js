@@ -8,6 +8,10 @@ const ReceiptSchema = new mongoose.Schema({
   items: {
     type: String,
   },
+  userid: {
+    type: String,
+    require:true
+  },
 });
 
 module.exports = ReceiptSchema;
