@@ -38,6 +38,30 @@ const AddFriend = async (req, res) => {
   }
 };
 
+
+
+const removeFriend = async (req, res) => {
+  try {
+    console.log(req.body);
+    let value = await Users.updateOne(
+      { _id: req.body.userid },
+      { $pull: { friends: req.body.friendid } }
+    );
+   
+    console.log(value);
+    res.send(value)
+ 
+
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
+
+
+
+
+
+
 const PapulateFriend = async (req, res) => {
   try {
     console.log(req.body);
@@ -53,4 +77,5 @@ module.exports = {
   SearchFriend,
   AddFriend,
   PapulateFriend,
+  removeFriend,
 };

@@ -4,6 +4,7 @@ const friendController = require("../controllers/FriendController.js/FriendContr
 router.post("/search", friendController.SearchFriend);
 router.post("/add", friendController.AddFriend);
 router.post("/get", friendController.PapulateFriend);
+router.post("/removefriend", friendController.removeFriend);
 
 
 module.exports = router;
