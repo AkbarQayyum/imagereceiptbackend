@@ -10,6 +10,7 @@ router.post("/receipt", userControllers.SaveReceipt);
 router.get("/receipt/:id", userControllers.getAllReceipt);
 router.delete("/receipt/:id", userControllers.RemoveReceipt);
 router.delete("/delete/:id", userControllers.removeUser);
+router.post("/payable", userControllers.getallpayables);
 
 
 module.exports = router;

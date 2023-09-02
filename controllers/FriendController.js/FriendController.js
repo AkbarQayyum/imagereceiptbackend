@@ -67,6 +67,8 @@ const addfriendReceipt = async (req, res) => {
   }
 };
 
+
+
 const PapulateFriend = async (req, res) => {
   try {
     console.log(req.body);

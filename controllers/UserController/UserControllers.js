@@ -40,7 +40,7 @@ const getuserById = async (req, res) => {
     let data = await Users.findOne({
       username: req.body.username,
       password: req.body.password,
-    }).populate('friends');
+    }).populate("friends");
     console.log(data);
     if (data) {
       console.log("hello");
@@ -112,6 +112,15 @@ const getAllReceipt = async (req, res) => {
     res.send({ Error: error });
   }
 };
+const getallpayables = async (req, res) => {
+  try {
+   
+    const data = await Users.findById( req.body.id );
+    res.send(data?.receipts);
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
 
 const removeUser = async (req, res) => {
   try {
@@ -146,4 +155,5 @@ module.exports = {
   updateUser,
   getAllReceipt,
   RemoveReceipt,
+  getallpayables,
 };
