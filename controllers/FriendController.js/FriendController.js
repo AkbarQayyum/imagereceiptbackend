@@ -58,11 +58,10 @@ const addfriendReceipt = async (req, res) => {
     console.log(req.body);
         let value = await Users.updateOne(
           { _id: req.body.userid },
-          { $pull: { receipts: req.body.receipt } }
+          { $push: { receipts: req.body.receipt } }
         );
 
-        console.log(value);
-        res.send(value);
+ 
     res.send({ message: "Friend Added Successfully", isSuccess: true });
   } catch (error) {
     res.send({ Error: error });
