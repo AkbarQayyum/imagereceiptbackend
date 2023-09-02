@@ -56,8 +56,11 @@ const removeFriend = async (req, res) => {
 const addfriendReceipt = async (req, res) => {
   try {
     console.log(req.body);
-    
- 
+    let value = await Users.updateOne(
+      { _id: req.body.userid },
+      { $push: { receipts: req.body.receipt } }
+    );
+    console.log(value);
     res.send({ message: "Friend Added Successfully", isSuccess: true });
   } catch (error) {
     res.send({ Error: error });
