@@ -56,12 +56,27 @@ const removeFriend = async (req, res) => {
 const addfriendReceipt = async (req, res) => {
   try {
     console.log(req.body);
+        let value = await Users.updateOne(
+          { _id: req.body.userid },
+          { $pull: { receipts: req.body.receipt } }
+        );
+
+        console.log(value);
+        res.send(value);
+    res.send({ message: "Friend Added Successfully", isSuccess: true });
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
+const removeFriendReceipt = async (req, res) => {
+  try {
+    console.log(req.body);
     let value = await Users.updateOne(
       { _id: req.body.userid },
-      { $push: { receipts: req.body.receipt } }
+      { $pull: { receipts: req.body.receipt } }
     );
     console.log(value);
-    res.send({ message: "Friend Added Successfully", isSuccess: true });
+    res.send({ message: "receipt remove", isSuccess: true });
   } catch (error) {
     res.send({ Error: error });
   }
@@ -86,4 +101,5 @@ module.exports = {
   PapulateFriend,
   removeFriend,
   addfriendReceipt,
+  removeFriendReceipt,
 };

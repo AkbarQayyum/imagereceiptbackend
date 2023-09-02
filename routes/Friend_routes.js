@@ -6,6 +6,7 @@ router.post("/add", friendController.AddFriend);
 router.post("/get", friendController.PapulateFriend);
 router.post("/removefriend", friendController.removeFriend);
 router.post("/addreceipt", friendController.addfriendReceipt);
+router.post("/removereceipt", friendController.removeFriendReceipt);
 
 
 module.exports = router;
