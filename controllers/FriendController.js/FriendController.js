@@ -38,8 +38,6 @@ const AddFriend = async (req, res) => {
   }
 };
 
-
-
 const removeFriend = async (req, res) => {
   try {
     console.log(req.body);
@@ -47,20 +45,24 @@ const removeFriend = async (req, res) => {
       { _id: req.body.userid },
       { $pull: { friends: req.body.friendid } }
     );
-   
-    console.log(value);
-    res.send(value)
- 
 
+    console.log(value);
+    res.send(value);
   } catch (error) {
     res.send({ Error: error });
   }
 };
 
-
-
-
-
+const addfriendReceipt = async (req, res) => {
+  try {
+    console.log(req.body);
+    
+ 
+    res.send({ message: "Friend Added Successfully", isSuccess: true });
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
 
 const PapulateFriend = async (req, res) => {
   try {
@@ -78,4 +80,5 @@ module.exports = {
   AddFriend,
   PapulateFriend,
   removeFriend,
+  addfriendReceipt,
 };

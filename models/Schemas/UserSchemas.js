@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
     type: [Schema.Types.ObjectId],
     ref: "RegisterUsers",
   },
+  receipts: {
+    type: [String],
+  },
 });
 
 //export schema to use in model file
