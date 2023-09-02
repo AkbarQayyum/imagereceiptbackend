@@ -40,7 +40,7 @@ const getuserById = async (req, res) => {
     let data = await Users.findOne({
       username: req.body.username,
       password: req.body.password,
-    });
+    }).populate('friends');
     console.log(data);
     if (data) {
       console.log("hello");
