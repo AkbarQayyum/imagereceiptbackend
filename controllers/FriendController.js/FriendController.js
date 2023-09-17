@@ -5,9 +5,24 @@ const jwt = require("jsonwebtoken");
 
 const SearchFriend = async (req, res) => {
   try {
-    let data = await Users.find({
-      username: req.body.name,
-    });
+    let data = [];
+    if (req.body.searchby === "name") {
+      data = await Users.find({
+        username: req.body.name,
+      });
+    } else if (req.body.searchby === "email") {
+      data = await Users.find({
+        email: req.body.name,
+      });
+    } else if (req.body.searchby === "phone") {
+      data = await Users.find({
+        phone: req.body.name,
+      });
+    } else {
+      data = await Users.find({
+        username: req.body.name,
+      });
+    }
     console.log(data);
     let val = data?.map((d) => {
       return { name: d?.username, id: d?._id };
@@ -56,12 +71,11 @@ const removeFriend = async (req, res) => {
 const addfriendReceipt = async (req, res) => {
   try {
     console.log(req.body);
-        let value = await Users.updateOne(
-          { _id: req.body.userid },
-          { $push: { receipts: req.body.receipt } }
-        );
+    let value = await Users.updateOne(
+      { _id: req.body.userid },
+      { $push: { receipts: req.body.receipt } }
+    );
 
- 
     res.send({ message: "Friend Added Successfully", isSuccess: true });
   } catch (error) {
     res.send({ Error: error });
@@ -80,8 +94,6 @@ const removeFriendReceipt = async (req, res) => {
     res.send({ Error: error });
   }
 };
-
-
 
 const PapulateFriend = async (req, res) => {
   try {
