@@ -112,10 +112,29 @@ const getAllReceipt = async (req, res) => {
     res.send({ Error: error });
   }
 };
+
+const getSingleReceipt = async (req, res) => {
+  try {
+    console.log(req.body.id);
+    const data = await ReceiptModal.findById(req.body.id);
+    console.log(data);
+    let d = await ReceiptModal.updateOne(
+      { _id: req.body.id },
+      {
+        $set: {
+          items: req.body.items,
+        },
+      }
+    );
+    res.send(d);
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
+
 const getallpayables = async (req, res) => {
   try {
-   
-    const data = await Users.findById( req.body.id );
+    const data = await Users.findById(req.body.id);
     res.send(data?.receipts);
   } catch (error) {
     res.send({ Error: error });
@@ -156,4 +175,5 @@ module.exports = {
   getAllReceipt,
   RemoveReceipt,
   getallpayables,
+  getSingleReceipt,
 };

@@ -11,6 +11,7 @@ router.get("/receipt/:id", userControllers.getAllReceipt);
 router.delete("/receipt/:id", userControllers.RemoveReceipt);
 router.delete("/delete/:id", userControllers.removeUser);
 router.post("/payable", userControllers.getallpayables);
+router.post("/updatereceipt", userControllers.getSingleReceipt);
 
 
 module.exports = router;
