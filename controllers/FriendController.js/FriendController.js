@@ -90,6 +90,15 @@ const addfriendReceipt = async (req, res) => {
       { $push: { receipts: req.body.receipt } }
     );
 
+    const obj = {
+      text: `you have been added to a payable receipt please check payable section for further details`,
+      time: new Date().toLocaleString(),
+      isRead: false,
+      userid: req.body.userid,
+    };
+    let notival = new NotiModal(obj);
+    let noti = await notival.save();
+
     res.send({ message: "Friend Added Successfully", isSuccess: true });
   } catch (error) {
     res.send({ Error: error });
