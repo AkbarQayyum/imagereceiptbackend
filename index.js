@@ -9,12 +9,13 @@ app.use(bodyParser.json());
 const dotenv = require("dotenv");
 const usersRouters = require("./routes/Auth_routes");
 const friend = require('./routes/Friend_routes')
-
+const Notifications = require('./routes/NotificationRoutes')
 dotenv.config();
 require("./config/mongodb_connection");
 
 app.use("/users/auth/", usersRouters);
 app.use("/friend/", friend);
+app.use("/notifications/", Notifications);
 
 
 const PORT = process.env.PORT || 4433;

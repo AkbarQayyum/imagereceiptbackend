@@ -1,6 +1,7 @@
 const { response } = require("express");
 const Users = require("../../models/UserModal");
 const ReceiptModal = require("../../models/ReceiptModal/modal");
+const NotiModal = require("../../models/NotificationModal/modal");
 const jwt = require("jsonwebtoken");
 
 const SearchFriend = async (req, res) => {
@@ -47,6 +48,19 @@ const AddFriend = async (req, res) => {
     );
     console.log(value);
     console.log(val);
+
+    const data = await Users.findOne({ _id: req.body.userid });
+    console.log(data);
+    const obj = {
+      text: `${data?.username} added you as a friend`,
+      time: new Date().toLocaleString(),
+      isRead: false,
+      userid: req.body.friendid,
+    };
+    let notival = new NotiModal(obj);
+    let noti = await notival.save();
+    console.log(noti);
+
     res.send({ message: "Friend Added Successfully", isSuccess: true });
   } catch (error) {
     res.send({ Error: error });
