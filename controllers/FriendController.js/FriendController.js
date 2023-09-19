@@ -67,6 +67,16 @@ const AddFriend = async (req, res) => {
   }
 };
 
+const UserFriendList = async (req, res) => {
+  try {
+    let data = await Users.findById(req.body.id).populate("friends");
+    console.log(data);
+    res.send(data?.friends);
+  } catch (error) {
+    res.send({ Error: error });
+  }
+};
+
 const removeFriend = async (req, res) => {
   try {
     console.log(req.body);
@@ -136,4 +146,5 @@ module.exports = {
   removeFriend,
   addfriendReceipt,
   removeFriendReceipt,
+  UserFriendList,
 };
