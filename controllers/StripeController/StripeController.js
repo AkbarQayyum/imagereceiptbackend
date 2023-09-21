@@ -22,7 +22,9 @@ const getpublishablekeys = async (req, res) => {
     res.json({
       clientsecret: clientsecret,
     });
-  } catch (error) {}
+  } catch (error) {
+    res.json({error:error})
+  }
 };
 
 module.exports = {
