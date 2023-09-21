@@ -3,10 +3,8 @@ const publishable =
 const secret =
   "sk_test_51NsrdZLyRzScJ8xjxeCFjHMLQzYmP6LcyRANgzDzV7f59pATDOO9LOFDpun5ME07rpFQGItmrXJKRibaRk5ywZN0005szTxmIb";
 
-
-const Stripe = require('stripe');
-const stripe = new Stripe(secret,{apiVersion:'2023-08-16'})
-
+const Stripe = require("stripe");
+const stripe = new Stripe(secret, { apiVersion: "2023-08-16" });
 
 const getpublishablekeys = async (req, res) => {
   try {
@@ -23,7 +21,7 @@ const getpublishablekeys = async (req, res) => {
       clientsecret: clientsecret,
     });
   } catch (error) {
-    res.json({error:error})
+    res.json({ error: error });
   }
 };
 
