@@ -3,8 +3,25 @@ const publishable =
 const secret =
   "sk_test_51Ns3yNSICWvJLyV1zUqY5IiqLjdEKWAHAwVZUU6T5HkREy7cphCmBl24tg9Kuyk3IJXwzaJlId3LIPIG9CVcNECV00b5BDXlKa";
 
+
+const Stripe = require('stripe');
+const stripe = new Stripe(secret,{apiVersion:'2020-08-27'})
+
+
 const getpublishablekeys = async (req, res) => {
   try {
+    const paymentintent = await stripe.paymentIntents.create({
+      amount: 1099,
+      currency: "usd",
+      payment_method_types: ["card"],
+    });
+    console.log(paymentintent);
+    const clientsecret = paymentintent.client_secret;
+    console.log(clientsecret);
+
+    res.json({
+      clientsecret: clientsecret,
+    });
   } catch (error) {}
 };
 
