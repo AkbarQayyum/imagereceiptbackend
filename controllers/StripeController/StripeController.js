@@ -1,7 +1,7 @@
 const publishable =
-  "pk_test_51Ns3yNSICWvJLyV1xhpRTyoJJvdBaEDiuT6AbX4Pk8c2zGl1efx7ubmJji0k4uv8AWZ4eGXq7w0VStzk9AeIsj0W00OvWjOZQD";
+  "pk_test_51NsrdZLyRzScJ8xjmb8aEU7uPyBtka0MG06YIL7sMgozwfgZXm0Djy2QDOvKfDuavRdOt3ly0Ui1ZKLVU7ZGsphP0007kPbWLV";
 const secret =
-  "sk_test_51Ns3yNSICWvJLyV1zUqY5IiqLjdEKWAHAwVZUU6T5HkREy7cphCmBl24tg9Kuyk3IJXwzaJlId3LIPIG9CVcNECV00b5BDXlKa";
+  "sk_test_51NsrdZLyRzScJ8xjxeCFjHMLQzYmP6LcyRANgzDzV7f59pATDOO9LOFDpun5ME07rpFQGItmrXJKRibaRk5ywZN0005szTxmIb";
 
 
 const Stripe = require('stripe');
