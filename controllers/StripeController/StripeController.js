@@ -3,15 +3,14 @@ const publishable =
 const secret =
   "sk_test_51Ns3yNSICWvJLyV1zUqY5IiqLjdEKWAHAwVZUU6T5HkREy7cphCmBl24tg9Kuyk3IJXwzaJlId3LIPIG9CVcNECV00b5BDXlKa";
 
-
-const Stripe = require('stripe');
-const stripe = new Stripe(secret,{apiVersion:'2020-08-27'})
-
+const Stripe = require("stripe");
+const stripe = new Stripe(secret, { apiVersion: "2020-08-27" });
 
 const getpublishablekeys = async (req, res) => {
   try {
+    console.log(req.body.amount);
     const paymentintent = await stripe.paymentIntents.create({
-      amount: 1099,
+      amount: parseFloat(req.body.amount) * 10,
       currency: "usd",
       payment_method_types: ["card"],
     });
@@ -23,7 +22,7 @@ const getpublishablekeys = async (req, res) => {
       clientsecret: clientsecret,
     });
   } catch (error) {
-    res.json({error:error})
+    res.json({ error: error });
   }
 };
 
