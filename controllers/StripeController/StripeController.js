@@ -9,10 +9,10 @@ const stripe = new Stripe(secret, { apiVersion: "2020-08-27" });
 const getpublishablekeys = async (req, res) => {
   try {
     console.log(req.body.amount);
-    let amt = (parseFloat(req.body.amount) * 100)
-    console.log(amt)
+    let amt = parseFloat(req.body.amount) * 100;
+    console.log(amt);
     const paymentintent = await stripe.paymentIntents.create({
-      amount:amt ,
+      amount: parseInt(amt),
       currency: "usd",
       payment_method_types: ["card"],
     });
