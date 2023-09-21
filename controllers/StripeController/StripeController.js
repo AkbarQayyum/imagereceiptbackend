@@ -12,7 +12,7 @@ const getpublishablekeys = async (req, res) => {
     let amt = parseFloat(req.body.amount) * 100;
     console.log(amt);
     const paymentintent = await stripe.paymentIntents.create({
-      amount: parseInt(amt),
+      amount: 1099,
       currency: "usd",
       payment_method_types: ["card"],
     });
