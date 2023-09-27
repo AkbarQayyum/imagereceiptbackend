@@ -1,16 +1,18 @@
 const userSchema = require("../../models/UserModal");
 const Stripe = require("stripe");
 
-const publishable =
-  "pk_test_51Ns3yNSICWvJLyV1xhpRTyoJJvdBaEDiuT6AbX4Pk8c2zGl1efx7ubmJji0k4uv8AWZ4eGXq7w0VStzk9AeIsj0W00OvWjOZQD";
-const secret =
-  "sk_test_51Ns3yNSICWvJLyV1zUqY5IiqLjdEKWAHAwVZUU6T5HkREy7cphCmBl24tg9Kuyk3IJXwzaJlId3LIPIG9CVcNECV00b5BDXlKa";
+// const publishable =
+//   "pk_test_51Ns3yNSICWvJLyV1xhpRTyoJJvdBaEDiuT6AbX4Pk8c2zGl1efx7ubmJji0k4uv8AWZ4eGXq7w0VStzk9AeIsj0W00OvWjOZQD";
+// const secret =
+//   "sk_test_51Ns3yNSICWvJLyV1zUqY5IiqLjdEKWAHAwVZUU6T5HkREy7cphCmBl24tg9Kuyk3IJXwzaJlId3LIPIG9CVcNECV00b5BDXlKa";
 
-const stripe = Stripe(secret);
 const getpublishablekeys = async (req, res) => {
   try {
+    const data = await userSchema.findOne({ _id: req.body.id });
+    const secret = data.secret;
+    const stripe = Stripe(secret);
     const paymentintent = await stripe.paymentIntents.create({
-      amount: 1099,
+      amount: parseInt(req.body.amount),
       currency: "usd",
       payment_method_types: ["card"],
     });
