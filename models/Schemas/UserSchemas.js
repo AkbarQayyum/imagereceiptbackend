@@ -25,12 +25,15 @@ const userSchema = new mongoose.Schema({
   },
   isAccountAttatched: {
     type: Boolean,
+    default: false,
   },
   secret: {
     type: String,
+    default: "",
   },
   public: {
     type: String,
+    default: "",
   },
   friends: {
     type: [Schema.Types.ObjectId],
