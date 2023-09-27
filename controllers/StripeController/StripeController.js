@@ -5,7 +5,7 @@ const secret =
 
 
 const Stripe = require('stripe');
-const stripe = new Stripe(secret,{apiVersion:'2020-08-27'})
+const stripe =  Stripe(secret)
 
 
 const getpublishablekeys = async (req, res) => {
