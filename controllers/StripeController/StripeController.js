@@ -8,17 +8,16 @@ const Stripe = require("stripe");
 
 const getpublishablekeys = async (req, res) => {
   try {
+    console.log(parseFloat(req.body.amount) * 1000);
     const data = await userSchema.findOne({ _id: req.body.id });
     const secret = data.secret;
     const stripe = Stripe(secret);
     const paymentintent = await stripe.paymentIntents.create({
-      amount: parseInt(req.body.amount),
+      amount: parseFloat(req.body.amount) * 1000,
       currency: "usd",
       payment_method_types: ["card"],
     });
-    console.log(paymentintent);
     const clientsecret = paymentintent.client_secret;
-    console.log(clientsecret);
 
     res.json({
       clientsecret: clientsecret,
