@@ -62,9 +62,19 @@ const removeaccount = async (req, res) => {
   }
 };
 
+const getsingleuser = async (req, res) => {
+  try {
+    let data = await userSchema.findOne({ _id: req.body.id });
+
+    res.send(data);
+  } catch (error) {
+    res.send({ error: error });
+  }
+};
+
 module.exports = {
   getpublishablekeys,
   updateUser,
-
+  getsingleuser,
   removeaccount,
 };
